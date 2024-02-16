@@ -3,21 +3,22 @@
 using namespace std;
 
 int binary_search(int arr[], int arr_len, int x) {
-    int l = -1;
+    int l = 0;
     int r = arr_len - 1;
-    while (r - l > 1) {
-        int mid = l + (r - l) / 2;
+    int mid = -1;
+    while (r - l > -1) {
+        mid = l + (r - l) / 2;
         if (x == arr[mid]) {
-            return mid;
+            break;
         }
         else if (x < arr[mid]) {
-            r = mid;
+            r = mid - 1;
         }
         else {
-            l = mid;
+            l = mid + 1;
         }
     }
-    if (x == arr[r]) return r;
+    if (r - l > -1) return mid;
     return -1;
 }
 
